@@ -1,0 +1,38 @@
+<!-- Load the Polymer.Element base class -->
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="select-element">
+  <!-- Defines the element's style and local DOM -->
+  <template>
+    
+    <style>
+    :host {
+    display: block;
+    padding: 16px;
+    }
+
+div {
+    border: solid 1px;
+}
+    </style>
+    
+
+    <div>
+    <select name="" id="">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+    </div>
+  </template>
+  <script>
+    
+    class SelectElement extends Polymer.Element {
+      static get is() { return 'select-element'; }
+    }
+    
+
+    customElements.define(SelectElement.is, SelectElement);
+  </script>
+</dom-module>
