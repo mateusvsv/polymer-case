@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>polymer-case test</title>
+
+    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../libs/select/index.html">
+
+  </head>
+  <body>
+
+    <test-fixture id="BasicTestFixture">
+      <template>
+        <my-select-element></my-select-element>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="CustomItems">
+      <template>
+        <my-select-element items='[{"name": "Arroz", "value": 999}]' ></my-select-element>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('my-select-element', () => {
+
+        test('loading default items', () => {
+          const element = fixture('BasicTestFixture');
+          element.$.items.render();
+          assert.equal(element.localName, 'my-select-element');
+          const elementShadowRoot = element.shadowRoot;
+          const elementOptions = elementShadowRoot.querySelectorAll('option');
+          assert.equal(elementOptions.length, 3);
+        });
+
+        test('setting items', () => {
+          const element = fixture('CustomItems');
+          element.$.items.render();
+          assert.equal(element.localName, 'my-select-element');
+          const elementShadowRoot = element.shadowRoot;
+          const elementOptions = elementShadowRoot.querySelectorAll('option');
+          assert.equal(elementOptions.length, 1);
+        });
+
+      });
+    </script>
+
+  </body>
+</html>

@@ -19,8 +19,10 @@ $ polymer serve --open  //para abrir o navegador
 ## Executando testes
 
 ```
-$ polymer test
+polymer test -l chrome
 ```
+
+*** Por enquanto testes apenas rodando no Chrome. Deverá ser implementado para demais navegadores.
 
 ## Exemplo de utilização do component
 
