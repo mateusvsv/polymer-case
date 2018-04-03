@@ -22,7 +22,10 @@
       <h3>Basic polymer-case demo</h3>
       <demo-snippet>
         <template>
-          <select-element></select-element>
+          <my-select-element items='[{"name": "Arroz", "value": 999}]' >
+            <h5 slot="footer2">Footer test2</h5>
+            <h6 slot="footer">Footer test</h6>
+          </my-select-element>
         </template>
       </demo-snippet>
     </div>

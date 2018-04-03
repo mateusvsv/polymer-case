@@ -1,38 +1,65 @@
 <!-- Load the Polymer.Element base class -->
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../styles/shared-colors.html">
 
-<dom-module id="select-element">
+<dom-module id="my-select-element">
   <!-- Defines the element's style and local DOM -->
   <template>
     
-    <style>
-    :host {
-    display: block;
-    padding: 16px;
-    }
-
-div {
-    border: solid 1px;
-}
+    <style include="shared-colors">
+      :host {
+        display: block;
+        color: blue;
+      }
     </style>
     
 
     <div>
-    <select name="" id="">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
+      <p>Select test</p>
+    <select>
+      <template is="dom-repeat" id="items" items="[[items]]">
+        <option value="{{item.value}}">{{item.name}}</option>
+      </template>
     </select>
     </div>
+
+    <button on-click="addItem">Add pizza</button>
+
+    <slot name="footer"></slot>
+    <slot name="footer2"></slot>
+
   </template>
   <script>
     
-    class SelectElement extends Polymer.Element {
-      static get is() { return 'select-element'; }
+    class MySelectElement extends Polymer.Element {
+      static get is() { return 'my-select-element'; }
+      
+      static get properties() {
+        return {
+          items: {
+            type: Array,
+            value() {
+              return [
+                {name: 'Pizza', value: 1, ordered: 0},
+                {name: 'Pasta', value: 2, ordered: 0},
+                {name: 'Toast', value: 3, ordered: 0}
+              ];
+            }
+          }
+        }
+      }
+
+      addItem() {
+        this.push('items', {name: 'Pizza', value: 1, ordered: 0});
+      }
+
+      constructor() {
+        super();
+      }  
     }
     
 
-    customElements.define(SelectElement.is, SelectElement);
+    customElements.define(MySelectElement.is, MySelectElement);
   </script>
 </dom-module>
