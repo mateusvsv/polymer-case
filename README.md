@@ -2,20 +2,35 @@
 
 
 
-## Install the Polymer-CLI
+## Instalando Polymer-CLI
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
+Primeiro, verifique se o Polymer-cli foi instalado corretamente. [Polymer CLI](https://www.npmjs.com/package/polymer-cli) 
 
-## Viewing Your Element
+## Executando o projeto
 
 ```
 $ polymer serve
 ```
 
-## Running Tests
+```
+$ polymer serve --open  //para abrir o navegador
+```
+
+## Executando testes
 
 ```
 $ polymer test
 ```
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+## Exemplo de utilização do component
+
+Para povoar o elemento customizado de ```<select> ``` deve ser definida a propriedade "items" com o array de objetos a serem listados. Estes objetos devem possuir os atributos "name" para descrição e "value" para valor do item na listagem.
+
+O componente também aceita a configuração de dois elementos de rodapé, contidos nos slots "footer" e "footer2".
+
+```
+<my-select-element items='[{"name": "Arroz", "value": 999}]' >
+    <h5 slot="footer2">Footer test2</h5>
+    <h6 slot="footer">Footer test</h6>
+</my-select-element>
+```
